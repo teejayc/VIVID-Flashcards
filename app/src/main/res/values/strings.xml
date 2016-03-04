@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">VIVID Flashcard</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_card">CardActivity</string>
+    <string name="title_activity_single_fragment">SingleFragmentActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <!-- menu bar -->
+    <string name="add_new">Add New</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="sort">Sort</string>
+    <string name="start_random">Start Random Mode</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+
+    <!-- new_dialog -->
+    <string name="new_dir">New Directory: </string>
+    <string name="new_deck">New Deck: </string>
+    <string name="new_card">New Card: </string>
+    <string name="new_item_name">Name: </string>
+
+    <!-- new_card_dialog -->
+    <string name="new_card_name">Name</string>
+    <string name="new_card_detail">Detail</string>
+
+    <!-- list_item_card -->
+    <string name="image_icon_description">Card Icon</string>
+    <string name="card_name_text_default">Card Name</string>
+    <string name="date_text_default">Date Created</string>
+    <string name="detail_text_default">Detail</string>
+    <string name="num_children_text_default">17 decks</string>
+
+    <!-- sort_dialog -->
+    <string name="sort_by_dialog_title">Sort By:</string>
+    <string name="sort_by_date_option">Date</string>
+    <string name="sort_by_name_option">Name</string>
+
+    <!-- load image dialog -->
+    <string name="load_with_camera_option">Camera</string>
+    <string name="load_with_gallery_option">Gallery</string>
+
+
+    <!-- login and Register dialog -->
+    <string name="user_id">User ID</string>
+    <string name="user_password">Password</string>
+    <string name="user_name">User Name</string>
+    <string name="user_retype_password">Retype Password</string>
+
+    <!-- On off line dialog -->
+    <string name="online_radio_button">Online</string>
+    <string name="offline_radio_button">Offline</string>
+    <string name="on_off_line_dialog_title">Do you want to go online?</string>
+
+</resources>

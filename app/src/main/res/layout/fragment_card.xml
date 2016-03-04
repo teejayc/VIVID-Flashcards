@@ -1,0 +1,79 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/host_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/blue">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/leftImageButton"
+        android:src="@drawable/left_button_image"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:id="@+id/imageImageView"
+            android:background="@drawable/curved_background" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:background="@drawable/curved_background"
+            android:fillViewport="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Title"
+                android:id="@+id/cardNameTextView"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textColor="@color/dark_blue"/>
+        </HorizontalScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_margin="30sp"
+            android:background="@drawable/curved_background"
+            android:fillViewport="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="New Text"
+                android:id="@+id/cardDetailTextView"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/dark_blue"/>
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/rightImageButton"
+        android:src="@drawable/right_button_image"
+        android:scrollbars="vertical"/>
+</LinearLayout>

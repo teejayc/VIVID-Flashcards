@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/list_item_image_view"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/list_item_check_box"
+        android:layout_toEndOf="@+id/list_item_check_box"
+        android:src="@drawable/directory_image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/card_name_text_default"
+        android:id="@+id/list_item_name_text_view"
+        android:layout_alignTop="@+id/list_item_image_view"
+        android:layout_toRightOf="@+id/list_item_image_view"
+        android:layout_toEndOf="@+id/list_item_image_view"
+        android:textSize="25sp"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/date_text_default"
+        android:id="@+id/list_item_date_text_view"
+        android:layout_below="@+id/list_item_name_text_view"
+        android:layout_alignLeft="@+id/list_item_name_text_view"
+        android:textSize="15sp"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/num_children_text_default"
+        android:id="@+id/list_item_detail_text_view"
+        android:textIsSelectable="true"
+        android:textSize="15sp"
+        android:layout_below="@+id/list_item_date_text_view"
+        android:layout_alignLeft="@+id/list_item_date_text_view"
+        android:layout_alignStart="@+id/list_item_date_text_view"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item_check_box"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
