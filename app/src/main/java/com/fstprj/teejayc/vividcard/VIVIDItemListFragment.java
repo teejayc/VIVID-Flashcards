@@ -387,7 +387,6 @@ public class VIVIDItemListFragment extends Fragment {
         }
     }
 
-    //TODO: CONTINUE HERE
     private class UploadBackgroundTask extends AsyncTask<String, Void, String> {
 
         public static final String UPLOAD_DECK_URL
@@ -422,7 +421,6 @@ public class VIVIDItemListFragment extends Fragment {
                         .getItem(UUID.fromString(params[0]), DeckTable.NAME);
                 deckJson.put("pid", deck.getPID().toString());
                 deckJson.put("id", deck.getID().toString());
-                //TODO: change to Long in server db
                 deckJson.put("date", deck.getDateCreated().getTime());
                 deckJson.put("name", deck.getName());
                 deckJson.put("num_cards", deck.getNumCards());
@@ -438,14 +436,12 @@ public class VIVIDItemListFragment extends Fragment {
                     Card c = (Card)card;
                     cardJson.put("pid", c.getPID().toString());
                     cardJson.put("id", c.getID().toString());
-                    //TODO: change to Long in server db
                     cardJson.put("date", c.getDateCreated().getTime());
                     cardJson.put("name", c.getName());
                     cardJson.put("detail", c.getDetail());
                     cardJson.put("color", c.getColor());
                     //TODO: save image
                     cardJson.put("image", c.getImagePath());
-                    //TODO: change to Long in server db
                     cardJson.put("last_visit_date", c.getLastVisitDate().getTime());
                     cardJson.put("num_forget", c.getNumForget());
                     cardJson.put("num_forget_over_dates", c.getNumForgetOverNumDates());

@@ -26,7 +26,6 @@ public class Deck extends VIVIDItem {
                 String numCards, String creator) {
         super(UUID.fromString(id));
         mPID = UUID.fromString(pid);
-        //TODO: save as long!!
         setDateCreated(new Date(Long.getLong(date)));
         setName(name);
         setNumCards(Integer.getInteger(numCards));

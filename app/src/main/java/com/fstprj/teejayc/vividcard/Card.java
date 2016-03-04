@@ -17,7 +17,6 @@ public class Card extends VIVIDItem{
     private Bitmap mScaledImage;
     private Bitmap mOriginalImage;
     private Date mLastVisitDate;
-    //TODO: make it unlimited
     private long mNumForget;
     private double mNumForgetOverNumDates;
     private String mCreator;
