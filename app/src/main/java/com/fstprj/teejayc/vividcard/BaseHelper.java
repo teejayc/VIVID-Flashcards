@@ -69,8 +69,7 @@ public class BaseHelper extends SQLiteOpenHelper{
                 CardTable.Attributes.DATE + ", " +
                 CardTable.Attributes.NAME + ", " +
                 CardTable.Attributes.DETAIL + ", " +
-                CardTable.Attributes.SCALED_IMAGE + ", " +
-                CardTable.Attributes.ORIGINAL_IMAGE + ", " +
+                CardTable.Attributes.IMAGE + ", " +
                 CardTable.Attributes.COLOR + ", " +
                 CardTable.Attributes.LAST_VISIT_DATE + ", " +
                 CardTable.Attributes.NUM_FORGET_OVER_NUM_DATES + ", " +
@@ -97,9 +96,7 @@ public class BaseHelper extends SQLiteOpenHelper{
                         + " ADD COLUMN " + CardTable.Attributes.CREATOR + " TEXT;");
 
                 db.execSQL("ALTER TABLE " + CardTable.NAME
-                        + " ADD COLUMN " + CardTable.Attributes.SCALED_IMAGE + " TEXT;");
-                db.execSQL("ALTER TABLE " + CardTable.NAME
-                        + " ADD COLUMN " + CardTable.Attributes.ORIGINAL_IMAGE + " TEXT;");
+                        + " ADD COLUMN " + CardTable.Attributes.IMAGE + " TEXT;");
                 //TODO: test it
                 Cursor cursor = db.query(CardTable.NAME,
                         null, null, null, null, null, null);
@@ -132,8 +129,7 @@ public class BaseHelper extends SQLiteOpenHelper{
                         card.setNumForget(numForget);
                         card.setNumForgetOverNumDates(numForgetOverDates);
                         Bitmap imageBitmap = BitmapFactory.decodeFile(imagePath);
-                        card.setOriginalImage(imageBitmap);
-                        card.setScaledImage(imageBitmap);
+                        card.setImage(imageBitmap);
 
                         ContentValues values = card.getContentValues();
 
@@ -147,7 +143,6 @@ public class BaseHelper extends SQLiteOpenHelper{
                 finally {
                     cursor.close();
                 }
-
 
             db.execSQL("ALTER TABLE " + DeckTable.NAME
                     + " DROP COLUMN " + "image");

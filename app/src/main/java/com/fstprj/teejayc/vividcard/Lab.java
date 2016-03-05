@@ -115,7 +115,7 @@ public class Lab {
             JSONObject jsonObject = new JSONObject(string);
             JSONArray jsonArray = jsonObject.getJSONArray("server_response");
             int count = 0;
-            String pid, id, date, name, detail, color, scaled_image, original_image;
+            String pid, id, date, name, detail, color, image;
             String last_visit_date, num_forget, num_forget_over_dates, creator;
             while (count < jsonObject.length()) {
                 JSONObject JO = jsonArray.getJSONObject(count);
@@ -125,14 +125,13 @@ public class Lab {
                 name = JO.getString(CardTable.Attributes.NAME);
                 detail = JO.getString(CardTable.Attributes.DETAIL);
                 color = JO.getString(CardTable.Attributes.COLOR);
-                scaled_image = JO.getString(CardTable.Attributes.SCALED_IMAGE);
-                original_image = JO.getString(CardTable.Attributes.ORIGINAL_IMAGE);
+                image = JO.getString(CardTable.Attributes.IMAGE);
                 last_visit_date = JO.getString(CardTable.Attributes.LAST_VISIT_DATE);
                 num_forget = JO.getString(CardTable.Attributes.NUM_FORGET);
                 num_forget_over_dates = JO.getString(CardTable.Attributes.NUM_FORGET_OVER_NUM_DATES);
                 creator = JO.getString(CardTable.Attributes.CREATOR);
                 cards.add(new Card(pid, id, date, name, detail, color,
-                        scaled_image, original_image, last_visit_date, num_forget,
+                        image, last_visit_date, num_forget,
                         num_forget_over_dates, creator));
                 ++count;
             }
@@ -426,8 +425,7 @@ public class Lab {
                 "SELECT " +
                         CardTable.Attributes.PID + ", " +
                         CardTable.Attributes.NAME + ", " +
-                        CardTable.Attributes.SCALED_IMAGE + ", " +
-                        CardTable.Attributes.ORIGINAL_IMAGE + ", " +
+                        CardTable.Attributes.IMAGE + ", " +
                         CardTable.Attributes.ID + ", " +
                         CardTable.Attributes.DETAIL + ", " +
                         CardTable.Attributes.DATE + ", " +
@@ -466,8 +464,7 @@ public class Lab {
                 "SELECT " +
                         CardTable.Attributes.PID + ", " +
                         CardTable.Attributes.NAME + ", " +
-                        CardTable.Attributes.SCALED_IMAGE + ", " +
-                        CardTable.Attributes.ORIGINAL_IMAGE + ", " +
+                        CardTable.Attributes.IMAGE + ", " +
                         CardTable.Attributes.ID + ", " +
                         CardTable.Attributes.DETAIL + ", " +
                         CardTable.Attributes.DATE + ", " +

@@ -14,8 +14,7 @@ public class Card extends VIVIDItem{
     private UUID mPID;
     private String mDetail;
     private int mColor;
-    private Bitmap mScaledImage;
-    private Bitmap mOriginalImage;
+    private Bitmap mImage;
     private Date mLastVisitDate;
     private long mNumForget;
     private double mNumForgetOverNumDates;
@@ -29,13 +28,12 @@ public class Card extends VIVIDItem{
 
     //for new Card
     public Card(String nameIn, String detailIn, int colorIn,
-                Bitmap scaledImageIn, Bitmap originalImageIn, UUID pID) {
+                Bitmap imageIn, UUID pID) {
         super(nameIn);
         mPID = pID;
         mDetail = detailIn;
         mColor = colorIn;
-        mScaledImage = scaledImageIn;
-        mOriginalImage = originalImageIn;
+        mImage = imageIn;
         mLastVisitDate = new Date();
         mNumForget = 0;
         mNumForgetOverNumDates = 0.0;
@@ -43,7 +41,7 @@ public class Card extends VIVIDItem{
 
     //for downloading image
     public Card(String pid, String id, String date, String name, String detail,
-                String color, String scaledImage, String originalImage,
+                String color, String image,
                 String last_visit_date, String num_forget,
                 String num_forget_over_dates, String creator) {
         super(UUID.fromString(id));
@@ -53,12 +51,9 @@ public class Card extends VIVIDItem{
         mDetail = detail;
         mColor = Integer.getInteger(color);
         ByteArrayInputStream imageStream
-                = new ByteArrayInputStream(scaledImage.getBytes());
-        Bitmap image = BitmapFactory.decodeStream(imageStream);
-        setScaledImage(image);
-        imageStream = new ByteArrayInputStream(originalImage.getBytes());
-        image = BitmapFactory.decodeStream(imageStream);
-        setOriginalImage(image);
+                = new ByteArrayInputStream(image.getBytes());
+        Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
+        mImage = imageBitmap;
         mLastVisitDate = new Date(Long.getLong(last_visit_date));
         mNumForget = Long.getLong(num_forget);
         mNumForgetOverNumDates = Double.valueOf(num_forget_over_dates);
@@ -81,20 +76,12 @@ public class Card extends VIVIDItem{
         this.mDetail = mDetail;
     }
 
-    public Bitmap getScaledImage() {
-        return mScaledImage;
+    public Bitmap getImage() {
+        return mImage;
     }
 
-    public void setScaledImage(Bitmap scaledImage) {
-        this.mScaledImage = scaledImage;
-    }
-
-    public Bitmap getOriginalImage() {
-        return mOriginalImage;
-    }
-
-    public void setOriginalImage(Bitmap originalImage) {
-        this.mOriginalImage = originalImage;
+    public void setImage(Bitmap imageIn) {
+        this.mImage = imageIn;
     }
 
     public int getColor() {
@@ -146,13 +133,9 @@ public class Card extends VIVIDItem{
         values.put(CardTable.Attributes.COLOR, mColor);
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        mScaledImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        mImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte imageInByte[] = stream.toByteArray();
-        values.put(CardTable.Attributes.SCALED_IMAGE, imageInByte);
-
-        mOriginalImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        imageInByte = stream.toByteArray();
-        values.put(CardTable.Attributes.ORIGINAL_IMAGE, imageInByte);
+        values.put(CardTable.Attributes.IMAGE, imageInByte);
 
         values.put(CardTable.Attributes.LAST_VISIT_DATE, mLastVisitDate.getTime());
         values.put(CardTable.Attributes.NUM_FORGET_OVER_NUM_DATES, mNumForgetOverNumDates);

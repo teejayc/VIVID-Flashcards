@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -440,8 +442,13 @@ public class VIVIDItemListFragment extends Fragment {
                     cardJson.put("name", c.getName());
                     cardJson.put("detail", c.getDetail());
                     cardJson.put("color", c.getColor());
-                    //TODO: save image
-                    cardJson.put("image", c.getImagePath());
+
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    c.getImage().compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+                    String imageString = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+                    cardJson.put("image", imageString);
                     cardJson.put("last_visit_date", c.getLastVisitDate().getTime());
                     cardJson.put("num_forget", c.getNumForget());
                     cardJson.put("num_forget_over_dates", c.getNumForgetOverNumDates());
@@ -616,7 +623,7 @@ public class VIVIDItemListFragment extends Fragment {
                         card.getName(),
                         card.getDetail(),
                         card.getColor(),
-                        card.getImagePath());
+                        card.getImage());
                 dialog.setTargetFragment(VIVIDItemListFragment.this, REQUEST_EDIT_ITEM_CODE);
                 dialog.show(manager, EDIT_ITEM);
             }
@@ -787,13 +794,10 @@ public class VIVIDItemListFragment extends Fragment {
                 String newCardName = data.getStringExtra(NewCardDialog.EXTRA_NEW_CARD_NAME);
                 String newCardDetail = data.getStringExtra(NewCardDialog.EXTRA_NEW_CARD_DETAIL);
                 int newCardColor = data.getIntExtra(NewCardDialog.EXTRA_NEW_CARD_COLOR, 0);
-                Bitmap scaledImage = (Bitmap)data.getParcelableExtra(
-                        NewCardDialog.EXTRA_NEW_CARD_ORIGINAL_IMAGE);
-                Bitmap originalImage = (Bitmap)data.getParcelableExtra(
-                        NewCardDialog.EXTRA_NEW_CARD_SCALED_IMAGE);
+                Bitmap image = data.getParcelableExtra(NewCardDialog.EXTRA_NEW_CARD_IMAGE);
                 Lab.get(getActivity()).addItem(
                         new Card(newCardName, newCardDetail, newCardColor,
-                                scaledImage, originalImage, mPID), CardTable.NAME);
+                                image, mPID), CardTable.NAME);
             } else if (mTableName.equals(DeckTable.NAME)) {
                 String newDeckName = data.getStringExtra(NewVIVIDItemDialog.EXTRA_NEW_ITEM_NAME);
                 Lab.get(getActivity()).addItem(new Deck(newDeckName, mPID), DeckTable.NAME);
@@ -811,12 +815,9 @@ public class VIVIDItemListFragment extends Fragment {
                 card.setDetail(data.getStringExtra(NewCardDialog.EXTRA_NEW_CARD_DETAIL));
                 card.setColor(data.getIntExtra(NewCardDialog.EXTRA_NEW_CARD_COLOR, 0));
                 if (data.getBooleanExtra(NewCardDialog.EXTRA_IMAGE_CHANGED, false)) {
-                    card.setScaledImage(
-                            (Bitmap)data.getParcelableExtra(
-                                    NewCardDialog.EXTRA_NEW_CARD_SCALED_IMAGE));
-                    card.setOriginalImage(
-                            (Bitmap)data.getParcelableExtra(
-                                    NewCardDialog.EXTRA_NEW_CARD_ORIGINAL_IMAGE));
+                    card.setImage(
+                            (Bitmap) data.getParcelableExtra(
+                                    NewCardDialog.EXTRA_NEW_CARD_IMAGE));
                 }
 
                 Lab.get(getActivity()).updateItem(card, CardTable.NAME);

@@ -175,9 +175,9 @@ public class CardFragment extends Fragment {
         mImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mCard.getScaledImage() != null) {
+                if (mCard.getImage() != null) {
                     mImage.setVisibility(View.VISIBLE);
-                    mImage.setImageBitmap(mCard.getScaledImage());
+                    mImage.setImageBitmap(mCard.getImage());
                     mImage.setBackground(null);
                 }
                 else {

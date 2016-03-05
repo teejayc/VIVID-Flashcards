@@ -13,6 +13,7 @@ import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -25,10 +26,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.UUID;
 
 
@@ -48,10 +51,8 @@ public class NewCardDialog extends DialogFragment {
             = "com.taejungchang.vividcard.new_card_detail";
     public static final String EXTRA_NEW_CARD_COLOR
             = "com.taejungchang.vividcard.new_card_color";
-    public static final String EXTRA_NEW_CARD_ORIGINAL_IMAGE
-            = "com.taejungchang.vividcard.new_card_original_image";
-    public static final String EXTRA_NEW_CARD_SCALED_IMAGE
-            = "com.taejungchang.vividcard.new_card_scaled_image";
+    public static final String EXTRA_NEW_CARD_IMAGE
+            = "com.taejungchang.vividcard.new_card_image";
     public static final String EXTRA_IMAGE_CHANGED
             = "com.taejungchang.vividcard.new_card_image_changed";
 
@@ -66,8 +67,7 @@ public class NewCardDialog extends DialogFragment {
     private static final String IMAGE_PATH_SI = "image_path";
     private static final String CHECKED_RADIO_ID_SI = "checked_radio_button_id";
     private static final String IS_CHECKING_SI = "is_checking";
-    private static final String ORIGINAL_IMAGE = "original_image";
-    private static final String SCALED_IMAGE = "scaled_image";
+    private static final String IMAGE = "image";
     private static final String IMAGE_CHANGED = "image_changed";
 
     private LinearLayout mHostLayout;
@@ -79,8 +79,7 @@ public class NewCardDialog extends DialogFragment {
     private int mCheckedRadioButtonID;
     private boolean isChecking;
     private View mView;
-    private Bitmap mScaledImage;
-    private Bitmap mOriginalImage;
+    private Bitmap mImage;
     private String mImagePath;
     private Boolean mImageChanged;
 
@@ -189,8 +188,7 @@ public class NewCardDialog extends DialogFragment {
         else {
             mName.setText(savedInstanceState.getString(NAME_SI));
             mDetail.setText(savedInstanceState.getString(DETAIL_SI));
-            mScaledImage = savedInstanceState.getParcelable(SCALED_IMAGE);
-            mOriginalImage = savedInstanceState.getParcelable(ORIGINAL_IMAGE);
+            mImage = savedInstanceState.getParcelable(IMAGE);
             mImagePath = savedInstanceState.getString(IMAGE_PATH_SI);
             mCheckedRadioButtonID = savedInstanceState.getInt(CHECKED_RADIO_ID_SI, 0);
             isChecking = savedInstanceState.getBoolean(IS_CHECKING_SI);
@@ -222,27 +220,22 @@ public class NewCardDialog extends DialogFragment {
         if (getTargetFragment() == null) {
             return;
         }
-
+        //TODO : make sure it happens after the original image is saved
         Intent intent = new Intent();
         intent.putExtra(EXTRA_NEW_CARD_NAME, name);
         intent.putExtra(EXTRA_NEW_CARD_DETAIL, detail);
         intent.putExtra(EXTRA_NEW_CARD_COLOR, color);
-        intent.putExtra(EXTRA_NEW_CARD_ORIGINAL_IMAGE, mOriginalImage);
-        intent.putExtra(EXTRA_NEW_CARD_SCALED_IMAGE, mScaledImage);
-        intent.putExtra(EXTRA_IMAGE_CHANGED, mImageChanged);
+        intent.putExtra(EXTRA_NEW_CARD_IMAGE, mImage);
 
         getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
 
     private Bitmap rotateImage(Bitmap bitmap, float degree) {
-        Bitmap retVal;
-
         Matrix matrix = new Matrix();
         matrix.postRotate(degree);
-        retVal = Bitmap.createBitmap(
-                bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
-        return retVal;
+        return Bitmap.createBitmap(
+                bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
         //Saves file
 //    private void saveBitmap(Bitmap bitmap) {
@@ -304,26 +297,23 @@ public class NewCardDialog extends DialogFragment {
             cursor.moveToFirst();
             String selectedImagePath = cursor.getString(column_index);
 
-            mOriginalImage = BitmapFactory.decodeFile(selectedImagePath);
-            mScaledImage = PictureUtils.getScaledBitmap(getActivity(), selectedImagePath);
+            mImage = PictureUtils.getScaledBitmap(getActivity(), selectedImagePath);
 
             //Rotate image
+            //TODO: save original image
             try {
                 ExifInterface ei = new ExifInterface(selectedImagePath);
                 int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
                         ExifInterface.ORIENTATION_UNDEFINED);
                 switch(orientation) {
                     case ExifInterface.ORIENTATION_ROTATE_90:
-                        mOriginalImage = rotateImage(mOriginalImage, 90);
-                        mScaledImage = rotateImage(mScaledImage, 90);
+                        mImage = rotateImage(mImage, 90);
                         break;
                     case ExifInterface.ORIENTATION_ROTATE_180:
-                        mOriginalImage = rotateImage(mOriginalImage, 180);
-                        mScaledImage = rotateImage(mScaledImage, 90);
+                        mImage = rotateImage(mImage, 180);
                         break;
                     case ExifInterface.ORIENTATION_ROTATE_270:
-                        mOriginalImage = rotateImage(mOriginalImage, 270);
-                        mScaledImage = rotateImage(mScaledImage, 90);
+                        mImage = rotateImage(mImage, 270);
                         break;
                     default:
                         break;
@@ -334,7 +324,7 @@ public class NewCardDialog extends DialogFragment {
             }
 
             //Save and set image
-            setImage(mScaledImage);
+            setImage(mImage);
             mImageChanged = true;
         }
     }

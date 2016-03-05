@@ -18,8 +18,7 @@ public class DBSchema {
             public static final String NAME = "name";
             public static final String DETAIL = "detail";
             public static final String COLOR = "color";
-            public static final String SCALED_IMAGE = "scaled_image";
-            public static final String ORIGINAL_IMAGE = "original_image";
+            public static final String IMAGE = "image";
             public static final String LAST_VISIT_DATE = "last_visit_date";
             public static final String NUM_FORGET = "num_forget";
             public static final String NUM_FORGET_OVER_NUM_DATES = "num_forget_over_dates";
