@@ -26,8 +26,12 @@ public class VIVIDCursorWrapper extends CursorWrapper {
         String detail = getString(getColumnIndex(CardTable.Attributes.DETAIL));
         int color = getInt(getColumnIndex(CardTable.Attributes.COLOR));
         byte[] outImage = getBlob(getColumnIndex(CardTable.Attributes.IMAGE));
-        ByteArrayInputStream imageStream = new ByteArrayInputStream(outImage);
-        Bitmap image = BitmapFactory.decodeStream(imageStream);
+        Bitmap image = null;
+        if (outImage != null) {
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(outImage);
+            image = BitmapFactory.decodeStream(imageStream);
+        }
+
         long lastVisitDate = getLong(getColumnIndex(CardTable.Attributes.LAST_VISIT_DATE));
         long numForget
                 = getLong(getColumnIndex(CardTable.Attributes.NUM_FORGET));

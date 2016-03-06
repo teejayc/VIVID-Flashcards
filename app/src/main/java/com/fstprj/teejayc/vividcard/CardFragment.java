@@ -70,20 +70,7 @@ public class CardFragment extends Fragment {
 
     private void updateCard(View view) {
         int color = mCard.getColor();
-        //int darkerColor = ColorPallet.get().getDarkColorWithColor(color);
         view.setBackgroundColor(color);
-
-//        if (mCard.getImagePath() != null) {
-//            mImage.setImageBitmap(BitmapFactory.decodeFile(mCard.getImagePath()));
-//            mImage.setBackground(null);
-//        }
-//        else {
-//            mImage.setVisibility(View.GONE);
-//        }
-//        mName.setTextColor(darkerColor);
-//        mName.setText(mCard.getName());
-//        mDetail.setTextColor(darkerColor);
-//        mDetail.setText(mCard.getDetail());
     }
 
     private void getRandomArray() {
@@ -151,16 +138,25 @@ public class CardFragment extends Fragment {
     }
 
 
-    private void showText(TextView text) {
+    private void setTextColor(TextView text) {
         int color = mCard.getColor();
         int darkerColor = ColorPallet.get().getDarkColorWithColor(color);
         text.setTextColor(darkerColor);
-        text.setText(mCard.getName());
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_card, container, false);
+
+        if (isRandomMode) {
+            getNextRandomCard();
+        }
+        else {
+            mCard = (Card)mCards.get(mCurrCardIndex);
+        }
+
+        updateCard(mView);
 
         tTS = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
             @Override
@@ -172,51 +168,46 @@ public class CardFragment extends Fragment {
         });
 
         mImage = (ImageView) mView.findViewById(R.id.imageImageView);
+        mName = (TextView) mView.findViewById(R.id.cardNameTextView);
+        mDetail = (TextView) mView.findViewById(R.id.cardDetailTextView);
+        mPrevButton = (ImageView) mView.findViewById(R.id.leftImageButton);
+        mNextButton = (ImageView) mView.findViewById(R.id.rightImageButton);
+
+        if (mCard.getImage() == null) {
+            mImage.setVisibility(View.GONE);
+        }
         mImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mCard.getImage() != null) {
-                    mImage.setVisibility(View.VISIBLE);
-                    mImage.setImageBitmap(mCard.getImage());
-                    mImage.setBackground(null);
-                }
-                else {
-                    mImage.setVisibility(View.GONE);
-                }
+                mImage.setImageBitmap(mCard.getImage());
+                mImage.setBackground(null);
             }
         });
 
-        mName = (TextView) mView.findViewById(R.id.cardNameTextView);
         mName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mName.getText().equals(null)) {
-                    showText(mName);
+                setTextColor(mName);
+                mName.setText(mCard.getName());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    tTS.speak(mName.getText().toString(),
+                            TextToSpeech.QUEUE_FLUSH, null, null);
                 }
-                else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        tTS.speak(mName.getText().toString(),
-                                TextToSpeech.QUEUE_FLUSH, null, null);
-                    }
-                    else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                        tTS.speak(mName.getText().toString(),
-                                TextToSpeech.QUEUE_FLUSH, null);
-                    }
+                else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                    tTS.speak(mName.getText().toString(),
+                            TextToSpeech.QUEUE_FLUSH, null);
                 }
 
             }
         });
 
-        mDetail = (TextView) mView.findViewById(R.id.cardDetailTextView);
         mDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showText(mDetail);
+                setTextColor(mDetail);
+                mDetail.setText(mCard.getName());
             }
         });
-
-        mPrevButton = (ImageView) mView.findViewById(R.id.leftImageButton);
-        mNextButton = (ImageView) mView.findViewById(R.id.rightImageButton);
 
         if (isRandomMode) {
             mPrevButton.setImageResource(R.drawable.forgot_button_image);
@@ -262,25 +253,15 @@ public class CardFragment extends Fragment {
                     mCard.setNumForgetOverNumDates((double) numForget / (double) daysDiff);
                     lab.updateItem(mCard, CardTable.NAME);
                     getNextRandomCard();
-                }
-                else {
+                } else {
                     ++mCurrCardIndex;
                     mCurrCardIndex %= mCards.size();
-                    mCard = (Card)mCards.get(mCurrCardIndex);
+                    mCard = (Card) mCards.get(mCurrCardIndex);
                 }
                 updateCard(mView);
 
             }
         });
-
-        if (isRandomMode) {
-            getNextRandomCard();
-        }
-        else {
-            mCard = (Card)mCards.get(mCurrCardIndex);
-        }
-
-        updateCard(mView);
 
         return mView;
     }

@@ -132,10 +132,12 @@ public class Card extends VIVIDItem{
         values.put(CardTable.Attributes.DETAIL, mDetail);
         values.put(CardTable.Attributes.COLOR, mColor);
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        mImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte imageInByte[] = stream.toByteArray();
-        values.put(CardTable.Attributes.IMAGE, imageInByte);
+        if (mImage != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            mImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte imageInByte[] = stream.toByteArray();
+            values.put(CardTable.Attributes.IMAGE, imageInByte);
+        }
 
         values.put(CardTable.Attributes.LAST_VISIT_DATE, mLastVisitDate.getTime());
         values.put(CardTable.Attributes.NUM_FORGET_OVER_NUM_DATES, mNumForgetOverNumDates);

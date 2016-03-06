@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Title"
+                android:text="Touch to show"
                 android:id="@+id/cardNameTextView"
                 android:textSize="30sp"
                 android:gravity="center"
@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="New Text"
+                android:text="Touch to show"
                 android:id="@+id/cardDetailTextView"
                 android:textSize="20sp"
                 android:gravity="center"

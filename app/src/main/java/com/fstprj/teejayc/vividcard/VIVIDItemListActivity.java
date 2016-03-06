@@ -24,6 +24,7 @@ public class VIVIDItemListActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         UUID pID = (UUID) getIntent().getSerializableExtra(EXTRA_PID);
         String tableName = getIntent().getStringExtra(EXTRA_TABLE_NAME);
+        //TODO: set the action bar color after crash
         if (tableName.equals(DBSchema.DirectoryTable.NAME)) {
             getSupportActionBar().setBackgroundDrawable(
                     new ColorDrawable(ColorPallet.get().getColor(12)));//amber
@@ -36,6 +37,7 @@ public class VIVIDItemListActivity extends SingleFragmentActivity {
             getSupportActionBar().setBackgroundDrawable(
                     new ColorDrawable(ColorPallet.get().getColor(5)));//blue
         }
+
         return VIVIDItemListFragment.newInstance(pID, tableName);
     }
 

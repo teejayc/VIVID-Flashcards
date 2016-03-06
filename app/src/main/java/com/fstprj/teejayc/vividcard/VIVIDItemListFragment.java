@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -147,6 +148,9 @@ public class VIVIDItemListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         View view = inflater.inflate(R.layout.fragment_vivid_item_list, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.vivid_item_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -527,8 +531,6 @@ public class VIVIDItemListFragment extends Fragment {
 
     }
 
-
-
     private class DownloadBackgroundTask extends AsyncTask<String, Void, String> {
 
         public static final String JSON_DECKS_URL
@@ -795,7 +797,7 @@ public class VIVIDItemListFragment extends Fragment {
                 String newCardDetail = data.getStringExtra(NewCardDialog.EXTRA_NEW_CARD_DETAIL);
                 int newCardColor = data.getIntExtra(NewCardDialog.EXTRA_NEW_CARD_COLOR, 0);
                 Bitmap image = data.getParcelableExtra(NewCardDialog.EXTRA_NEW_CARD_IMAGE);
-                Lab.get(getActivity()).addItem(
+                mPID = Lab.get(getActivity()).addItem(
                         new Card(newCardName, newCardDetail, newCardColor,
                                 image, mPID), CardTable.NAME);
             } else if (mTableName.equals(DeckTable.NAME)) {
@@ -820,7 +822,7 @@ public class VIVIDItemListFragment extends Fragment {
                                     NewCardDialog.EXTRA_NEW_CARD_IMAGE));
                 }
 
-                Lab.get(getActivity()).updateItem(card, CardTable.NAME);
+                mPID = Lab.get(getActivity()).updateItem(card, CardTable.NAME);
             }
             else if (mTableName.equals(DeckTable.NAME)) {
                 Deck deck = (Deck)vividItem;

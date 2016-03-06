@@ -178,7 +178,8 @@ public class Lab {
                 null, null, orderBy);
 
         VIVIDCursorWrapper vividCursorWrapper = new VIVIDCursorWrapper(cursor);
-
+        //TODO: debug start here
+        //Update deck id when deck id changed
         try {
             vividCursorWrapper.moveToFirst();
             while (!vividCursorWrapper.isAfterLast()) {
@@ -193,6 +194,7 @@ public class Lab {
                 }
                 vividCursorWrapper.moveToNext();
             }
+
         }
         finally {
             vividCursorWrapper.close();
@@ -232,7 +234,7 @@ public class Lab {
         }
     }
 
-    public void addItem(VIVIDItem item, String tableName) {
+    public UUID addItem(VIVIDItem item, String tableName) {
         ContentValues values = item.getContentValues();
         mSQLiteDatabase.insert(tableName, null, values);
         VIVIDItem parentItem;
@@ -240,7 +242,7 @@ public class Lab {
             parentItem = getItem(((Card)item).getPID(), DeckTable.NAME);
             Deck deck = (Deck)parentItem;
             deck.setNumCards(deck.getNumCards() + 1);
-            updateItem(parentItem, getParentTableName(tableName));
+            return updateItem(parentItem, getParentTableName(tableName));
         }
         else if(tableName.equals(DeckTable.NAME)) {
             parentItem = getItem(((Deck)item).getPID(), DirectoryTable.NAME);
@@ -248,15 +250,17 @@ public class Lab {
             directory.setNumDecks(directory.getNumDecks() + 1);
             updateItem(parentItem, getParentTableName(tableName));
         }
+        return null;
     }
 
-    public void deleteItem(UUID iD, String tableName) {
+    public UUID deleteItem(UUID iD, String tableName) {
+        UUID id = null;
         if (tableName.equals(CardTable.NAME)) {
             Deck deck
                     = (Deck)getItem(((Card)getItem(iD, tableName)).getPID(),
                     DeckTable.NAME);
             deck.setNumCards(deck.getNumCards() - 1);
-            updateItem(deck, DeckTable.NAME);
+            id = updateItem(deck, DeckTable.NAME);
         }
         else if (tableName.equals(DeckTable.NAME)) {
             Directory directory
@@ -269,41 +273,8 @@ public class Lab {
         mSQLiteDatabase.delete(tableName,
                 "id = ? ",
                 new String[]{iD.toString()});
-//
-//        Cursor cursorDir = mSQLiteDatabase.query(DirectoryTable.NAME,
-//                null,
-//                null,
-//                null,
-//                null, null, null);
-//
-//        Cursor cursorDeck = mSQLiteDatabase.query(DeckTable.NAME,
-//                null,
-//                null,
-//                null,
-//                null, null, null);
-//
-//        Cursor cursorCard = mSQLiteDatabase.query(CardTable.NAME,
-//                null,
-//                null,
-//                null,
-//                null, null, null);
-//
-//        VIVIDCursorWrapper vividCursorWrapperDir = new VIVIDCursorWrapper(cursorDir);
-//        VIVIDCursorWrapper vividCursorWrapperDeck = new VIVIDCursorWrapper(cursorDeck);
-//        VIVIDCursorWrapper vividCursorWrapperCard = new VIVIDCursorWrapper(cursorCard);
-//
-//        try {
-//            Log.d("Delete Debug", "Num Dirs: " + vividCursorWrapperDir.getCount() + "\n");
-//            Log.d("Delete Debug", "Num Decks: " + vividCursorWrapperDeck.getCount() + "\n");
-//            Log.d("Delete Debug", "Num Cards: " + vividCursorWrapperCard.getCount() + "\n");
-//        }
-//        finally {
-//            vividCursorWrapperDir.close();
-//            vividCursorWrapperDeck.close();
-//            vividCursorWrapperCard.close();
-//        }
 
-
+        return id;
     }
 
     public void updateItemHelper(VIVIDItem item, String tableName) {
@@ -314,9 +285,10 @@ public class Lab {
                 new String[]{item.getID().toString()});
     }
 
-    public void updateItem(VIVIDItem item, String tableName) {
+    public UUID updateItem(VIVIDItem item, String tableName) {
         if (tableName.equals(DirectoryTable.NAME)) {
             updateItemHelper(item, tableName);
+
         }
         else if (tableName.equals(DeckTable.NAME)) {
             UUID newDeckID = UUID.randomUUID();
@@ -329,13 +301,14 @@ public class Lab {
 
             item.setID(newDeckID);
             updateItemHelper(item, tableName);
+            return newDeckID;
         }
         else if (tableName.equals(CardTable.NAME)) {
             updateItemHelper(item, CardTable.NAME);
             Deck parentDeck = (Deck) getItem(((Card)item).getPID(), DeckTable.NAME);
-            updateItem(parentDeck, DeckTable.NAME);
+            return updateItem(parentDeck, DeckTable.NAME);
         }
-
+        return null;
     }
 
     public String getPhotoFileName(UUID iD) {
