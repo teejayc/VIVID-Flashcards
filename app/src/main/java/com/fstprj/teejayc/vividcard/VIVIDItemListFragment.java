@@ -797,6 +797,7 @@ public class VIVIDItemListFragment extends Fragment {
                 String newCardDetail = data.getStringExtra(NewCardDialog.EXTRA_NEW_CARD_DETAIL);
                 int newCardColor = data.getIntExtra(NewCardDialog.EXTRA_NEW_CARD_COLOR, 0);
                 Bitmap image = data.getParcelableExtra(NewCardDialog.EXTRA_NEW_CARD_IMAGE);
+                //TODO: debug here. deck is is not updating properly
                 mPID = Lab.get(getActivity()).addItem(
                         new Card(newCardName, newCardDetail, newCardColor,
                                 image, mPID), CardTable.NAME);
