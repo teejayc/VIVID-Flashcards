@@ -1,0 +1,45 @@
+header {
+	text-align: center;
+	background: url("http://vividflashcards.com/images/MainPageHeaderBackround.jpg");
+	background-repeat: repeat-x;
+	font-weight: bold;
+	padding: 50px 0px 0px 0px;
+	font-family: 'Fredoka One', cursive;
+}
+.headerUl {
+	padding: 10px;
+	background: -webkit-linear-gradient(bottom, rgba(0, 191, 255, 0.3), rgba(0, 191, 255, 0));
+	background: -moz-linear-gradient(bottom, rgba(0, 191, 255, 0.5), rgba(0, 191, 255, 0.2));
+	height: 30px;
+}
+li {
+	display: inline;
+	padding: 0px 10px 0px 10px;
+}
+a {
+	color: #1B98C6;
+	text-decoration:none;
+}
+h1 {
+	text-align: center;
+	color: #1B98C6;
+	font-size: 35px;
+	font-family: 'Fredoka One', cursive;
+}
+.bodyContent {
+	width: 80%;
+	margin: 0 auto;
+	font-family: 'Varela Round', sans-serif;
+}
+.sampleImage {
+	width: 20%;
+}
+@media (max-width: 700px) {
+	li {
+		display: block;
+	}
+	.sampleImage {
+		width: 80%;
+	}
+}																			
+		

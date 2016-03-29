@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+	<link href="/css/normailize.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+	<header>
+		<img src="/images/VIVIDFlashcardsLogo.png" />
+		<h1>VIVID Flashcards</h1>
+		<ul class="headerUl">
+			<li><a href="http://vividflashcards.com/mainPage.html">Home</a></li>
+			<li><a href="http://vividflashcards.com/aboutVIVIDFlashcards.html">About VIVID Flashcards</a></li>
+			<li><a href="http://vividflashcards.com/comingSoon.html">Flashcards Library</a></li>
+			<li><a href="http://vividflashcards.com/comingSoon.html">My Page</a></li>
+			<li><a href="http://vividflashcards.com/comingSoon.html">Login</a></li>
+			<li><a href="https://play.google.com/store/apps/details?id=com.fstprj.teejayc.vividcard&hl=en">Download from Google Play</a></li>
+		</ul>
+	</header>
+	<div class="bodyContent">
+		<h1>Have problem memorizing? VIVID Card is here for you!</h1>
+		<p>
+			You can improve your memorization with association and visualization by adding images and changing flashcard colors for any subject such as math, history, geography, languages, SAT, GMAT, GRE, and etc.
+		</p>
+		<p>
+			You can also organize your cards by subjects or topics in different folders and decks.
+		</p>
+		<p>
+			Try out Random Play mode which effectively goes through the card set considering your learning pattern. 
+		</p>
+		<p>
+			Don't know how to read the new vocabulary? Touch the vocabulary to have VIVID Card read it for you!
+		</p>
+		<ul>
+			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage1.png" /></li>
+			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage2.png" /></li>
+			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage3.png" /></li>
+			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage4.png" /></li>
+			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage5.png" /></li>
+		</ul>
+	</div>
+<body>

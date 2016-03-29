@@ -2,49 +2,20 @@
 <head>
 	<link href="/css/normailize.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-	<style>
-		header {
-			text-align: center;
-			background: url("http://vividflashcards.com/images/MainPageHeaderBackround.jpg");
-			background-repeat: repeat-x;
-			font-family: "Verdana";
-			font-weight: bold;
-			padding: 50px 0px 0px 0px;
-			font-family: 'Fredoka One', cursive;
-		}
-		ul {
-			padding: 10px;
-			background: -webkit-linear-gradient(bottom, rgba(0, 191, 255, 0.3), rgba(0, 191, 255, 0));
-			background: -moz-linear-gradient(bottom, rgba(0, 191, 255, 0.5), rgba(0, 191, 255, 0.2));
-			height: 30px;
-		}
-		li {
-			display: inline;
-			padding: 0px 10px 0px 10px;
-		}
-		a {
-			color: #1B98C6;
-		}
-		h1 {
-			color: #1B98C6;
-		}
-		@media (max-width: 500px) {
-			li {
-				display: block;
-			}
-		}
-		
-	</style>
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 	<header>
-		<img src="/images/VIVIDFlashcardsLogo.png">
+		<img src="/images/VIVIDFlashcardsLogo.png" />
 		<h1>VIVID Flashcards</h1>
-		<ul>
-			<li><a href="#">About VIVID Flashcards</a></li>
-			<li><a href="#">Flashcards Library</a></li>
-			<li><a href="#">My Page</a></li>
-			<li><a href="#">Login</a></li>
+		<ul class="headerUl">
+			<li><a href="http://vividflashcards.com/mainPage.html">Home</a></li>
+			<li><a href="http://vividflashcards.com/aboutVIVIDFlashcards.html">About VIVID Flashcards</a></li>
+			<li><a href="http://vividflashcards.com/comingSoon.html">Flashcards Library</a></li>
+			<li><a href="http://vividflashcards.com/comingSoon.html">My Page</a></li>
+			<li><a href="http://vividflashcards.com/comingSoon.html">Login</a></li>
+			<li><a href="https://play.google.com/store/apps/details?id=com.fstprj.teejayc.vividcard&hl=en">Download from Google Play</a></li>
 		</ul>
 	</header>
 	

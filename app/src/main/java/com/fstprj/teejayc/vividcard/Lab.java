@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -233,6 +234,7 @@ public class Lab {
             vividCursorWrapper.close();
         }
     }
+
 
     public UUID addItem(VIVIDItem item, String tableName) {
         ContentValues values = item.getContentValues();

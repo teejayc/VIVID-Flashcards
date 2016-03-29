@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.fstprj.teejayc.vividcard.DBSchema.CardTable;
 import com.fstprj.teejayc.vividcard.DBSchema.DeckTable;
