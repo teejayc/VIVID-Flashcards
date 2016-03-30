@@ -16,7 +16,7 @@ header ul {
 
 header ul a {
 	color: #1B98C6;
-	text-decoration:none;
+	text-decoration: none;
 }
 
 header ul a:hover {
@@ -45,12 +45,23 @@ h1 {
 	font-size: 25px;
 }
 
+.bodyContent a {
+	text-decoration: none;
+	color: black;
+}
+
 li {
 	display: inline;
 }
 
 .sampleImage {
 	width: 15%;
+}
+
+.imageCredit {
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
 }
 
 @media (max-width: 500px) {

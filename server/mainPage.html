@@ -4,6 +4,51 @@
 	<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	
+	<style>
+
+		.gallery {
+		  width: 70%;
+		  margin: 0 auto;
+		  margin-top: 3%;
+		  padding: 5px;
+		  background: #fff;
+		  <!-- box-shadow: 0 1px 2px rgba(0,0,0,.3); -->
+		}
+
+		.gallery > div {
+		  position: relative;
+		  float: left;
+		  padding: 10px;
+		}
+
+		.gallery > div > img {
+		  display: block;
+		  width: 200px;
+		  transition: .1s transform;
+		  transform: translateZ(0); /* hack */
+		}
+
+		.gallery > div:hover {
+		  z-index: 1;
+		}
+
+		.gallery > div:hover > img {
+		  transform: scale(1.7,1.7);
+		  transition: .3s transform;
+		}
+
+		.cf:before, .cf:after {
+		  display: table;
+		  content: "";
+		  line-height: 0;
+		}
+
+		.cf:after {
+		  clear: both;
+		}
+
+	</style>
 </head>
 <body>
 	<header>
@@ -19,5 +64,68 @@
 			<li><a href="http://vividflashcards.com/developerInfo.html">Developer</a></li>
 		</ul>
 	</header>
-	
+
+	<div class="gallery cf">
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage1.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage2.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage3.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage4.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage5.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage6.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage9.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage12.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage15.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage18.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage7.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage10.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage13.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage16.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage19.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage8.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage11.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage14.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage17.png" />
+		</div>
+		<div>
+			<img src="http://vividflashcards.com/images/sampleImage20.png" />
+		</div>
+		
+	</div>
 <body>
