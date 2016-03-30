@@ -16,6 +16,7 @@
 			<li><a href="http://vividflashcards.com/comingSoon.html">My Page</a></li>
 			<li><a href="http://vividflashcards.com/comingSoon.html">Login</a></li>
 			<li><a href="https://play.google.com/store/apps/details?id=com.fstprj.teejayc.vividcard&hl=en">Download from Google Play</a></li>
+			<li><a href="http://vividflashcards.com/developerInfo.html">Developer</a></li>
 		</ul>
 	</header>
 	<div class="bodyContent">
@@ -30,14 +31,16 @@
 			Try out Random Play mode which effectively goes through the card set considering your learning pattern. 
 		</p>
 		<p>
-			Don't know how to read the new vocabulary? Touch the vocabulary to have VIVID Card read it for you!
+			Don't know how to read the new vocabulary?\nTouch the vocabulary to have VIVID Card read it for you!
 		</p>
-		<ul>
-			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage1.png" /></li>
-			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage2.png" /></li>
-			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage3.png" /></li>
-			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage4.png" /></li>
-			<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage5.png" /></li>
-		</ul>
+		<div>
+			<ul>
+				<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage1.png" /></li>
+				<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage2.png" /></li>
+				<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage3.png" /></li>
+				<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage4.png" /></li>
+				<li><img class="sampleImage" src="http://vividflashcards.com/images/sampleImage5.png" /></li>
+			</ul>
+		</div>
 	</div>
 <body>
