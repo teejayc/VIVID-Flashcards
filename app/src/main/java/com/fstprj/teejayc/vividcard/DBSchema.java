@@ -34,8 +34,6 @@ public class DBSchema {
             public static final String ID = "id";
             public static final String DATE = "date";
             public static final String NAME = "name";
-            public static final String IMAGE = "image";
-            public static final String NUM_CARDS = "numCards";
             public static final String CREATOR = "creator";
         }
     }
@@ -47,8 +45,6 @@ public class DBSchema {
             public static final String ID = "id";
             public static final String DATE = "date";
             public static final String NAME = "name";
-            public static final String IMAGE = "image";
-            public static final String NUM_DECKS = "numDecks";
         }
     }
 }
