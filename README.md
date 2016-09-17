@@ -4,7 +4,7 @@
 
 Learning new vocabularies helps us to improve our reading, writing, and communication skills and lead us to succeed in academic, social, and work environment. One of the best ways to memorize new vocabularies is using flashcards.
 
-However, the way we create, organize, and study flashcards can have a huge impact on the effectivity and  efficiency of learning. Making flashcards merely with words after words can demotivate the user and has low effectivity on memorizing. It is also very inefficient regarding time spent and studying to create decks of cards ignoring the vocabularies’ relativeness and difficulty. We might need helps from experienced people on the subject. Furthermore,  blindly flipping through a deck of cards does not guarantee we memorize each of the vocabularies with the same level. 
+However, the way we create, organize, and study flashcards can have a huge impact on the effectivity and  efficiency of learning. Making flashcards merely with words after words can demotivate the user and has low effectivity on memorizing. It is also very inefficient regarding time spent and studying to create decks of cards ignoring the vocabularies’ relativeness and difficulty. We might need helps from experienced people on the subject. Furthermore,  blindly flipping through a deck of cards does not guarantee we memorize each of the vocabularies with the same level.
 
 ##Solution
 
@@ -20,7 +20,7 @@ The main features of the application are having the user to customize the cards 
 
 ###Cards Customization and Deck Organization
 
-The cards customization with image feature will have the user add any image to a card that he or she can associate with the vocabulary.  The user can either load in the image by taking a picture or from his or her own storage. 
+The cards customization with image feature will have the user add any image to a card that he or she can associate with the vocabulary.  The user can either load in the image by taking a picture or from his or her own storage.
 
 Deck organization feature enables the user to organize cards considering relativeness and difficulty. The user can copy and move around the cards between decks.
 
@@ -36,9 +36,12 @@ The application will let the users share their customized decks of cards to get 
 
 The application requires the device between API 16 to API 23.
 
-##Software Requirements 
+##Software Requirements
 
 The application runs on Android.
 
-##Link
+##Google Play Link
 https://play.google.com/store/apps/details?id=com.fstprj.teejayc.vividcard
+
+##Website Link
+http://vividflashcards.com/
