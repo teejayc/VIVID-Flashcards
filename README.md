@@ -38,10 +38,18 @@ The application will let the users share their customized decks of cards to get 
 
 ###Database Design
 
-####Logical Model
+####Server Side
+
+#####Logical Model
 ![alt tag](https://github.com/teejayc/VIVID-Flashcards/blob/master/server_side_database_logical_model.png)
 
-####Relational Model
+#####Relational Model
+
+####Application Side
+
+#####Logical Model
+
+#####Relational Model
 
 ##Requirements
 
