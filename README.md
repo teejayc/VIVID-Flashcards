@@ -38,9 +38,9 @@ The application will let the users share their customized decks of cards to get 
 
 ###Database Design
 
-##Logical Model
+####Logical Model
 
-##Relational Model
+####Relational Model
 
 ##Requirements
 
