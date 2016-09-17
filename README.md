@@ -4,7 +4,7 @@
 
 ###Problem Background
 
-Learning new vocabularies helps us to improve our reading, writing, and communication skills and lead us to succeed in academic, social, and work environment. One of the best ways to memorize new vocabularies is using flashcards.
+Learning new vocabularies helps us to improve our reading, writing, and communication skills and leads us to succeed in academic, social, and work environment. One of the best ways to memorize new vocabularies is using flashcards.
 
 However, the way we create, organize, and study flashcards can have a huge impact on the effectivity and  efficiency of learning. Making flashcards merely with words after words can demotivate the user and has low effectivity on memorizing. It is also very inefficient regarding time spent and studying to create decks of cards ignoring the vocabularies’ relativeness and difficulty. We might need helps from experienced people on the subject. Furthermore,  blindly flipping through a deck of cards does not guarantee we memorize each of the vocabularies with the same level.
 
