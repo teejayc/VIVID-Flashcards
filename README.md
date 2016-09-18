@@ -36,6 +36,16 @@ The application will let the users share their customized decks of cards to get 
 
 ##Implementation
 
+###UML Class Diagram
+
+###Class/Function Level Design
+
+####Description and Responsibilities
+
+####Attributes
+
+####Operations
+
 ###Database Design
 
 ####Server Side
